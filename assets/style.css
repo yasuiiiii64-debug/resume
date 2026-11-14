@@ -1,0 +1,126 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+    line-height: 1.7;
+    color: #172536;
+    background-color: #f4f7f7;
+}
+
+header,
+footer {
+    padding: 24px;
+    color: #fff;
+    background-color: #172536;
+    text-align: center;
+}
+
+nav ul {
+    padding: 0;
+    list-style: none;
+}
+
+nav li {
+    display: inline-block;
+    margin: 4px 8px;
+}
+
+nav a {
+    color: #a7e9db;
+}
+
+main {
+    max-width: 900px;
+    margin: 24px auto;
+    padding: 0 16px;
+}
+
+section {
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.profile-photo {
+    display: block;
+    width: 160px;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto 16px;
+    border-radius: 10px;
+}
+
+.skill-level {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 10px;
+    border-radius: 12px;
+    background-color: #d9f2ed;
+    color: #174c43;
+    font-size: 0.85em;
+}
+
+.project-image {
+    display: block;
+    width: 100%;
+    max-width: 640px;
+    height: auto;
+    margin: 12px 0 24px;
+    border: 1px solid #d6e0e5;
+}
+
+.level-1 {
+    background-color: #e9ecef;
+    color: #343a40;
+}
+
+.level-2 {
+    background-color: #dbeafe;
+    color: #1e3a8a;
+}
+
+.level-3 {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.level-4 {
+    background-color: #fef3c7;
+    color: #78350f;
+}
+
+.level-5 {
+    background-color: #ede9fe;
+    color: #5b21b6;
+}
+
+.code-note {
+    margin: 12px 0 24px;
+    padding: 12px 16px;
+    border-left: 4px solid #174c43;
+    background-color: #f4f7f7;
+}
+
+nav a {
+    color: #a7e9db;
+    transition: color 0.2s;
+}
+
+nav a:hover {
+    color: #fff;
+}
+
+#projects article {
+    margin-bottom: 16px;
+    padding: 16px;
+    border: 1px solid #d6e0e5;
+    border-radius: 10px;
+}
+
+#projects h3 {
+    margin-top: 0;
+}

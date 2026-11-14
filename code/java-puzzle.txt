@@ -1,0 +1,163 @@
+package play;
+import java.util.*;
+import java.math.BigInteger;
+public class play4 {
+
+    static class Fraction {
+        BigInteger num;
+        BigInteger den;
+
+        Fraction(long n) {
+            this.num = BigInteger.valueOf(n);
+            this.den = BigInteger.ONE;
+        }
+
+        Fraction(BigInteger num, BigInteger den) {
+            if (den.signum() == 0) {
+                throw new ArithmeticException("Division by zero");
+            }
+
+            if (den.signum() < 0) {
+                num = num.negate();
+                den = den.negate();
+            }
+
+            BigInteger g = num.gcd(den);
+            this.num = num.divide(g);
+            this.den = den.divide(g);
+        }
+
+        Fraction add(Fraction other) {
+            return new Fraction(
+                this.num.multiply(other.den).add(other.num.multiply(this.den)),
+                this.den.multiply(other.den)
+            );
+        }
+
+        Fraction subtract(Fraction other) {
+            return new Fraction(
+                this.num.multiply(other.den).subtract(other.num.multiply(this.den)),
+                this.den.multiply(other.den)
+            );
+        }
+
+        Fraction multiply(Fraction other) {
+            return new Fraction(
+                this.num.multiply(other.num),
+                this.den.multiply(other.den)
+            );
+        }
+
+        Fraction divide(Fraction other) {
+            return new Fraction(
+                this.num.multiply(other.den),
+                this.den.multiply(other.num)
+            );
+        }
+
+        boolean isZero() {
+            return num.equals(BigInteger.ZERO);
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (!(o instanceof Fraction)) return false;
+            Fraction other = (Fraction) o;
+            return num.equals(other.num) && den.equals(other.den);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(num, den);
+        }
+    }
+
+    static class Node {
+        Fraction value;
+        String expr;
+
+        Node(Fraction value, String expr) {
+            this.value = value;
+            this.expr = expr;
+        }
+    }
+
+    static String findExpression(List<Node> nums, Fraction target) {
+        if (nums.size() == 1) {
+            if (nums.get(0).value.equals(target)) {
+                return nums.get(0).expr;
+            }
+            return null;
+        }
+
+        int n = nums.size();
+
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                Node a = nums.get(i);
+                Node b = nums.get(j);
+
+                List<Node> rest = new ArrayList<>();
+                for (int k = 0; k < n; k++) {
+                    if (k != i && k != j) {
+                        rest.add(nums.get(k));
+                    }
+                }
+
+                List<Node> candidates = new ArrayList<>();
+
+                candidates.add(new Node(a.value.add(b.value), "(" + a.expr + "+" + b.expr + ")"));
+                candidates.add(new Node(a.value.multiply(b.value), "(" + a.expr + "*" + b.expr + ")"));
+                candidates.add(new Node(a.value.subtract(b.value), "(" + a.expr + "-" + b.expr + ")"));
+                candidates.add(new Node(b.value.subtract(a.value), "(" + b.expr + "-" + a.expr + ")"));
+
+                if (!b.value.isZero()) {
+                    candidates.add(new Node(a.value.divide(b.value), "(" + a.expr + "/" + b.expr + ")"));
+                }
+                if (!a.value.isZero()) {
+                    candidates.add(new Node(b.value.divide(a.value), "(" + b.expr + "/" + a.expr + ")"));
+                }
+
+                for (Node next : candidates) {
+                    List<Node> nextList = new ArrayList<>(rest);
+                    nextList.add(next);
+
+                    String result = findExpression(nextList, target);
+                    if (result != null) {
+                        return result;
+                    }
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        List<Node> nums = new ArrayList<>();
+
+        for (int i = 0; i < n; i++) {
+            long x = sc.nextLong();
+            nums.add(new Node(new Fraction(x), String.valueOf(x)));
+        }
+
+        long targetNum = sc.nextLong();
+        Fraction target = new Fraction(targetNum);
+
+        String answer = findExpression(nums, target);
+
+        if (answer != null) {
+            if (answer.startsWith("(") && answer.endsWith(")")) {
+                answer = answer.substring(1, answer.length() - 1);
+            }
+            System.out.println(answer + " = " + targetNum);
+        } else {
+            System.out.println("can't");
+        }
+
+        sc.close();
+    }
+}

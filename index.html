@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個人資料</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <header>
+        <h1>安井 逢紀人</h1>
+        <p>中原大學生</p>
+        <nav aria-label="頁面導覽">
+            <ul>
+                <li><a href="#about">基本資料</a></li>
+                <li><a href="#sxkills">專業技能</a></li>
+                <li><a href="#projects">作品經歷</a></li>
+                <li><a href="#contact">聯絡資訊</a></li>
+            </ul>
+            </nav>
+    </header>
+
+    <main>
+        <section id="about">
+            <h2>基本資料</h2>
+            <img class="profile-photo" src="image/profile.jpg" style="border-radius: 50%;" alt="我的個人照片">
+            <p>我目前就讀中原大學 對程式設計與個人化 AI 開發有興趣
+                我曾用 Python 試作人生遊戲和書籍管理工具，也用 Java 製作四則運算解題程式。
+                未來，我希望開發能配合不同使用者需求的 AI 工具。
+            </p>
+            <p><strong>座右銘</strong> <span lang="ja">コツコツが勝つコツ</span><br>
+                持續努力，就是致勝的訣竅。</p>
+        </section>
+
+        <section id="skills">
+            <h2>專業技能</h2>
+            <ul>
+                <li>HTML <span class="skill-level level-2">基礎</span></li>
+                <li>CSS <span class="skill-level level-2">基礎</span></li>
+                <li>Python <span class="skill-level level-3">可獨立製作小型程式</span></li>
+                <li>Java <span class="skill-level level-3">可獨立製作小型程式</span></li>
+                <li>日文 <span class="skill-level level-5">母語</span></li>
+            </ul>
+        </section>
+
+        <section id="projects">
+            <h2>作品經歷</h2>
+
+            <article>
+                <h3>Java 四則運算解題程式</h3>
+                <p>我用 Java 製作了一個四則運算解題程式，讓使用者輸入一組數字和目標值。
+                    我用遞迴搜尋可能的算式，讓每個輸入的數字只使用一次，並將中間結果存成分數。
+                    製作過程中，我學會了如何用遞迴探索不同組合，以及如何避免除法的捨入誤差。</p>
+                <img class="project-image" src="image/java-puzzle.png" alt="四則運算解題程式輸出算式的畫面">
+                <p class="code-note">
+                    <strong>原始碼導讀</strong><br>
+                    <a href="code/java-puzzle.txt" target="_blank" rel="noopener">查看 Java 原始碼</a>
+                </p>
+            </article>
+
+            <article>
+                <h3>Python 選擇式人生遊戲</h3>
+                <p>我用 Python 製作了一款在終端機遊玩的文字遊戲，並設計了購買遊戲機、選擇職業和旅行等事件。
+                    玩家做出的選擇會改變金錢、運氣或朋友數，其中運氣和朋友數也會影響之後的職業收入。
+                    透過這個作品，我學會了用變數記錄遊戲狀態，並用條件分支處理不同的選擇。</p>
+                <img class="project-image" src="image/life-game.png" alt="人生遊戲顯示事件選項與金錢變化的畫面">
+            </article>
+
+            <article>
+                <h3>Python 書籍管理工具（原型）</h3>
+                <p>我用 Python 試作了一個書籍管理工具，讓程式從文字檔讀取書名，並在終端機顯示操作選單。
+                    我把查詢、新增和刪除分成不同的函式，讓使用者依書名或清單編號查詢，並在程式執行期間編輯書單。
+                    透過這個作品，我練習了檔案讀取、串列操作，以及如何把不同功能拆成函式。</p>
+                <img class="project-image" src="image/book-search.png" alt="書籍管理工具依清單編號查詢書名的畫面">
+            </article>
+        </section>
+
+        <section id="contact">
+            <h2>聯絡資訊</h2>
+            <ul>
+                <li><a href="https://www.instagram.com/ya_su_iiiiiiiiiiiiiiiiiiii/" target="_blank" rel="noopener">Instagram</a></li>
+                <li><a href="mailto:cookiesweet64@gmail.com">寄信給我</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>安井 逢紀人</p>
+    </footer>
+</body>
+</html>
